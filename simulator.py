@@ -43,7 +43,7 @@ current_month = "January"
 current_day = 1
 
 pop_id = 0
-starting_population = 3
+starting_population = 100
 
 
 human_template = {
@@ -275,8 +275,10 @@ def person_died(person):
 
 
 def check_if_died(age):
-    chance_of_death = randint(0, 100)
-    if death_rate[age] < chance_of_death:
+    chance_of_death = randint(0, 10000)
+    print("Chance of death: %d" % chance_of_death)
+    print("Death Rate: %d" % death_rate[age])
+    if death_rate[age] > chance_of_death:
         return True
     return False
 
@@ -319,5 +321,7 @@ while len(population) > 0:
     progress_day()
     print("Checking if people died")
     check_deaths()
+
+print(people_who_died)
 
 # test_run_days()
